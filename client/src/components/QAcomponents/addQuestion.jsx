@@ -52,9 +52,6 @@ let AddQuestion = ({open, onClose, PRODUCT_ID}) => {
     if (email === '') {
       return;
     }
-    console.log('question: ', question);
-    console.log('nickname: ', nickname);
-    console.log('email: ', email);
 
     let body = {
       body: question,
@@ -69,7 +66,6 @@ let AddQuestion = ({open, onClose, PRODUCT_ID}) => {
       })
       .then(() => {
         let resetElements = document.getElementsByClassName('questionInput');
-        // console.log(resetElements);
         for (let i = 0; i < resetElements.length; i++) {
           resetElements[i].value = '';
           resetElements[i].src = '';

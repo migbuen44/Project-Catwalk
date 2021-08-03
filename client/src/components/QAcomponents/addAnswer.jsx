@@ -55,10 +55,6 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
     if (email === '') {
       return;
     }
-    // console.log('answer: ', answer);
-    // console.log('nickname: ', nickname);
-    // console.log('email: ', email);
-    // console.log('photos: ', photos);
 
     let body = {
       body: answer,
@@ -73,7 +69,6 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
       })
       .then(() => {
         let resetElements = document.getElementsByClassName('answerInput');
-        // console.log(resetElements);
         for (let i = 0; i < resetElements.length; i++) {
           resetElements[i].value = '';
           resetElements[i].src = '';
@@ -93,17 +88,11 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
     setEmail(e.target.value);
   };
 
-  let fileHandler = (e) => {
-    console.log(e.target.files[0]);
-    // setPhotos([e.target.files[0]]);
-  };
-
   let handleYourPhoto = (e) => {
     setCurrentPhoto(e.target.value);
   };
 
   let handleAddPhoto = () => {
-    // console.log('photos: ', photos);
     setPhotos(prev => {
       let current = prev.concat([currentPhoto]);
       return current;
@@ -124,7 +113,6 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
           <div>Your Answer *</div>
           <textarea className='yourAnswer answerInput' type='text' placeholder='Example: It is true to size.'
             onChange={handleAnswer}/>
-          {/* <input type='file' onChange={fileHandler}/> */}
           <div>Your Photos</div>
           <input type='text' className='yourPhoto answerInput' placeholder='Place photo URL here...' onChange={handleYourPhoto}/>
           <span className='addPhoto' onClick={handleAddPhoto}>Add Photo</span>
@@ -132,7 +120,6 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
             {photos.map((photo, index) => {
               let style = {height: '50px', width: 'auto'};
               return <Image key={index} src={photo} style={style}/>;
-              // return <img key={index} className='answerInput' style={{height: '50px', width: 'auto'}} src={photo}></img>;
             })}
           </div>
           <div>Your Nickname *</div>

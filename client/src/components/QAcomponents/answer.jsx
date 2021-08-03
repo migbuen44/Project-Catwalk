@@ -5,14 +5,9 @@ import FullImage from './fullImage.jsx';
 
 let Answer = ({answer}) => {
 
-  //state hook for helpful count
-  // console.log('answer object: ', answer);
   let [answerHelpfulness, setAnswerHelpfulness] = useState();
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   let [reportClicked, setReportClicked] = useState(false);
-  // let [fullImageIsOpen, setFullImageIsOpen] = useState(false);
-  // let date = new Date(answer.date);
-  // console.log('date: ', date);
 
   useEffect(() => {
     setAnswerHelpfulness(answer.helpfulness);
@@ -61,17 +56,10 @@ let Answer = ({answer}) => {
       <span className='answerBody'> {answer.body}</span>
       <div>
         {answer.photos.map((photo, index) => {
-          // console.log('beasdfas;dfkaljsdfas');
-          // let [fullImageIsOpen, setFullImageIsOpen] = useState(false);
           let style = {height: '70px', width: 'auto'};
           return (
             <>
               <Image key={index} src={photo.url} style={style}/>
-              {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}></img>&nbsp; */}
-              {/* <img key={index} style={{height: '70px', width: 'auto'}} src={photo.url}
-                onClick={() => setFullImageIsOpen(true)}></img>&nbsp;
-              <FullImage open={fullImageIsOpen} onClose={() => setFullImageIsOpen(false)}
-                src={photo.url}/> */}
             </>
           );
         })}

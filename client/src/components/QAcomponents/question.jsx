@@ -5,8 +5,6 @@ import axios from 'axios';
 import _ from 'underscore';
 
 let Question = ({question, PRODUCT_ID}) => {
-  // console.log('input questions: ', question);
-  //state hook for helpful count
   let [answers, setAnswers] = useState([]);
   let [answerCount, setAnswerCount] = useState(2);
   let [questionHelpfulness, setQuestionHelpfulness] = useState();
@@ -24,7 +22,6 @@ let Question = ({question, PRODUCT_ID}) => {
   let retrieveAnswers = (page, count) => {
     axios.get(`${url}/qa/questions/${question.question_id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        // console.log('answers response: ', data.results);
         let sortedAnswers = _.sortBy(data.results, (answer) => {
           return answer.helpfulness;
         });
@@ -36,8 +33,6 @@ let Question = ({question, PRODUCT_ID}) => {
       });
   };
 
-  // let question_id = question.question_id;
-
   useEffect(() => {
     setAnswerCount(2);
     retrieveAnswers(1, answerCount);
@@ -48,22 +43,15 @@ let Question = ({question, PRODUCT_ID}) => {
   }, [question]);
 
   let moreAnswersHandler = () => {
-    // console.log('question id: ', question.question_id);
     setAnswerCount(prevAnswerCount => {
-      // let currentCount = prevAnswerCount + 2;
       let currentCount = prevAnswerCount + 100;
-      // console.log('current count: ', currentCount);
-      // console.log('question_id: ', question.question_id);
       retrieveAnswers(1, currentCount);
+
       return currentCount;
     });
-    // retrieveAnswers(question_id, 1, answerCount)
   };
 
   let helpfulClickHandler = () => {
-    // console.log('clicked');
-    // console.log('helpfulclicked: ', helpfulClicked);
-    console.log('question id helpfulness: ', question.question_id);
     if (!helpfulClicked) {
       setQuestionHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
@@ -79,7 +67,6 @@ let Question = ({question, PRODUCT_ID}) => {
   };
 
   let reportClickHandler = () => {
-    // console.log('question id: ', question.question_id);
     if (!reportClicked) {
       setReportClicked(true);
 

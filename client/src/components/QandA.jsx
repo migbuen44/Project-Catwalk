@@ -16,22 +16,16 @@ const auth = {
 };
 
 let QandA = ({productId}) => {
-  // let PRODUCT_ID = 16056;//refactor for product Id as input
-  // let PRODUCT_ID = useSelector(state => state.productReducer.product.id);
   let PRODUCT_ID = productId;
-  // console.log('product id her eis ,', PRODUCT_ID);
 
-  //function to get info from atelier api
   let [questions, setQuestions] = useState([]);
   let [questionCount, setQuestionCount] = useState(4);
   let [searchQuestions, setSearchQuestions] = useState([]);
   let [addQuestionIsOpen, setAddQuestionIsOpen] = useState(false);
 
   let retrieveQuestions = (page, count) => {
-    axios.get(`${url}/qa/questions?product_id=${PRODUCT_ID}&page=${page}&count=${count}`, auth)//refactor for product id input
+    axios.get(`${url}/qa/questions?product_id=${PRODUCT_ID}&page=${page}&count=${count}`, auth)
       .then(({data}) => {
-
-        //perform sort here
         let sortedQuestions = _.sortBy(data.results, (question) => {
           return question.question_helpfulness;
         });
@@ -45,12 +39,10 @@ let QandA = ({productId}) => {
   };
 
 
-  // retrieveQuestions();
   useEffect(() => {
     setQuestionCount(4);
     retrieveQuestions(1, questionCount);
     setAddQuestionIsOpen(false);
-    // console.log('useeffect retrieve questions');
   }, [productId]);
 
   let moreQuestionsHandler = () => {
@@ -59,9 +51,7 @@ let QandA = ({productId}) => {
       retrieveQuestions(1, currentCount);
       return currentCount;
     });
-    // retrieveQuestions(1, questionCount)
   };
-  // console.log('searchQuestions before return: ', searchQuestions);
 
   return (
     <>
@@ -70,7 +60,6 @@ let QandA = ({productId}) => {
         searchQuestions={searchQuestions}/>
       <div className='questionAndAnswer'>
         {questions.map((question, index) => {
-          // return <Question question={question.question_body} helpfulCount={question.question_helpfulness}/>//<>Questions...Answers</>
           return <Question question={question} key={index} PRODUCT_ID={PRODUCT_ID}/>;
         })}
       </div>
