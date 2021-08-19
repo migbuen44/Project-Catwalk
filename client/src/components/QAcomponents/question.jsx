@@ -3,6 +3,7 @@ import Answer from './answer.jsx';
 import AddAnswer from './addAnswer.jsx';
 import axios from 'axios';
 import _ from 'underscore';
+import info from '../info';
 
 let Question = ({question, PRODUCT_ID}) => {
   let [answers, setAnswers] = useState([]);
@@ -12,13 +13,9 @@ let Question = ({question, PRODUCT_ID}) => {
   let [reportClicked, setReportClicked] = useState(false);
   let [addAnswerIsOpen, setAddAnswerIsOpen] = useState(false);
 
-  const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+  const url = info.url;
+  const auth = info.auth;
 
-  const auth = {
-    headers: {
-      Authorization: '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'
-    }
-  };
   let retrieveAnswers = (page, count) => {
     axios.get(`${url}/qa/questions/${question.question_id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {

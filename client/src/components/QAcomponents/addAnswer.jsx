@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactDom from 'react-dom';
 import axios from 'axios';
 import Image from './image.jsx';
+import info from '../info';
 
 const MODAL_STYLES = {
   width: '700px',
@@ -25,13 +26,8 @@ const OVERLAY_STYLES = {
   zIndex: 1000
 };
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
-
-const auth = {
-  headers: {
-    Authorization: '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'
-  }
-};
+const url = info.url;
+const auth = info.auth;
 
 let AddAnswer = ({open, onClose, question_id, question_body}) => {
 

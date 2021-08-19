@@ -6,14 +6,10 @@ import axios from 'axios';
 import _ from 'underscore';
 import bluebird from 'bluebird';
 import {useSelector} from 'react-redux';
+import info from './info';
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
-
-const auth = {
-  headers: {
-    Authorization: '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'
-  }
-};
+const url = info.url;
+const auth = info.auth;
 
 let QandA = ({productId}) => {
   let PRODUCT_ID = productId;
