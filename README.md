@@ -2,7 +2,7 @@
 
 **Version 1.0.0**
 
-Project-catwalk is a product web page that displays the currently selected product along with its corresponding informations, such as its description, related items,
+Project-catwalk is a product web page that displays the currently selected product along with its corresponding information, such as its description, related items,
 product reviews and ratings, and question and answers sections.
 
 ## Installation
@@ -23,4 +23,4 @@ product reviews and ratings, and question and answers sections.
   - Report button to report questions and answers
   - Displays user images in answers component and displays images on full screen when clicked
 
-This web app was a project I was assigned during my tenior at Hack Reactor. I opted to constuct the questions and answers widget and I built this web app with a group of three other highly capable engineers who I am now very glad to call my friends.
+This web app was a project I was assigned during my tenior at Hack Reactor. I opted to constuct the questions and answers widget and I built this web app with a group of three other developers.
