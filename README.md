@@ -22,5 +22,3 @@ product reviews and ratings, and question and answers sections.
   - Add question and add answers buttons that when clicked display a modal form with text fields for user info and a submit button
   - Report button to report questions and answers
   - Displays user images in answers component and displays images on full screen when clicked
-
-This web app was a project I was assigned during my tenior at Hack Reactor. I opted to constuct the questions and answers widget and I built this web app with a group of three other developers.
