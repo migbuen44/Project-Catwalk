@@ -19,13 +19,18 @@ let QandA = ({productId}) => {
   let [searchQuestions, setSearchQuestions] = useState([]);
   let [addQuestionIsOpen, setAddQuestionIsOpen] = useState(false);
 
+  console.log('url: ', url);
+  console.log('product_id: ', PRODUCT_ID);
+
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=${PRODUCT_ID}&page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        let sortedQuestions = _.sortBy(data.results, (question) => {
-          return question.question_helpfulness;
+        console.log('data: ', data);
+        let sortedQuestions = _.sortBy(data, (question) => {
+          return question.helpfulness;
         });
         sortedQuestions = sortedQuestions.reverse();
+        console.log('sorted questions: ' , sortedQuestions);
         setQuestions(sortedQuestions);
         setSearchQuestions(sortedQuestions);
       })

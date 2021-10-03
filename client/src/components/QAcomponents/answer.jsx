@@ -5,7 +5,6 @@ import FullImage from './fullImage.jsx';
 import info from '../info';
 
 let Answer = ({answer}) => {
-
   let [answerHelpfulness, setAnswerHelpfulness] = useState();
   let [helpfulClicked, setHelpfulClicked] = useState(false);
   let [reportClicked, setReportClicked] = useState(false);
@@ -25,7 +24,7 @@ let Answer = ({answer}) => {
       setAnswerHelpfulness(prevCount => prevCount + 1);
       setHelpfulClicked(true);
 
-      axios.put(`${url}/qa/answers/${answer.answer_id}/helpful`, answerHelpfulness,
+      axios.put(`${url}/qa/answers/${answer.id}/helpful`, answerHelpfulness,
         auth)
         .then(data => {
         })
@@ -39,7 +38,7 @@ let Answer = ({answer}) => {
     if (!reportClicked) {
       setReportClicked(true);
 
-      axios.put(`${url}/qa/answers/${answer.answer_id}/report`, 'report', auth)
+      axios.put(`${url}/qa/answers/${answer.id}/report`, 'report', auth)
         .catch(err => {
           throw err;
         });
@@ -61,7 +60,7 @@ let Answer = ({answer}) => {
         })}
       </div>
       <div className='answerInfo'>  By
-        <span className='userName'> {answer.answerer_name}</span>
+        <span className='userName'> {answer.name}</span>
         <span className='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
         <span className='helpful'> | Helpful? </span>
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>

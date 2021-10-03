@@ -1,5 +1,5 @@
 
-const initialState = { product: {id: 16056} };
+const initialState = { product: {id: 1} };
 
 
 const productReducer = (state = initialState, action) => {

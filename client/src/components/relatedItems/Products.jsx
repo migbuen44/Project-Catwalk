@@ -13,7 +13,7 @@ import 'swiper/components/navigation/navigation.min.css';
 
 SwiperCore.use([Pagination, Navigation]);
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'http://18.216.123.108/api';
 const options = {
   headers: {
     Authorization: Token.TOKEN
@@ -29,9 +29,12 @@ const Products = (props) => {
 
   const getStyles = () => {
     let stylesArr = [];
+    console.log('test data: ', props.testdata);
     props.testdata.map((id, index) => {
+      console.log('getstyles id: ', id);
       return axios.get(`${url}/products/${id}/styles`, options)
         .then(res => {
+          console.log('res data in getstyles: ', res.data);
           stylesArr.push(res.data);
           return res.data;
         })
@@ -71,7 +74,7 @@ const Products = (props) => {
   const getReview = () => {
     let reviewArr = [];
     props.testdata.map((id, index) => {
-      return axios.get(`${url}/reviews?product_id=${id}`, options)
+      return axios.get(`${url}/reviews/${id}`, options)
         .then(res => {
           // setReview([review, res.data]);
           // console.log('data in review', res.data);
@@ -107,6 +110,7 @@ const Products = (props) => {
     //   )
     // } else {
     // }
+    console.log('creat card related prodcuts: ', relatedProducts);
     return relatedProducts.map((product, index) => (
       <SwiperSlide key={index}>
         <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]} position={isMoved}/>

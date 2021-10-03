@@ -11,14 +11,14 @@ import RelatedItems from './relatedItems/RelatedItems.jsx';
 
 // api option data //
 import TOKEN from '../../../config.js';
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'http://18.216.123.108/api';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 
 const App = () => {
   const product = useSelector(state => state.productReducer.product);
   const dispatch = useDispatch();
-  let [productId, setProductId] = useState(16056);
+  let [productId, setProductId] = useState(1);
 
   const [reviews, setReviews] = useState({
     results: [],
@@ -43,7 +43,7 @@ const App = () => {
   }, [product]);
 
   const getProduct = () => {
-    axios.get(`${url}/products/16056`, auth)
+    axios.get(`${url}/products/1`, auth)
       .then(({ data }) => {
         dispatch({ type: 'CHANGE_PRODUCT', product: data });
         getStyles(data.id);

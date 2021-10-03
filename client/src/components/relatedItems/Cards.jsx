@@ -7,6 +7,8 @@ import Comparing from './Comparing.jsx';
 
 
 const Cards = (props) => {
+  console.log('card stylesInfo: ', props.stylesInfo);
+  console.log('cards product: ', props.product);
   const [styles, setStyles] = useState(props.stylesInfo);
   const [isMoved, setIsMoved] = useState(false);
   const [rating, setRating] = useState(props.reviewInfo);
@@ -29,7 +31,8 @@ const Cards = (props) => {
     // setStyles(props.stylesInfo);
     // setRating(props.reviewInfo);
   }, []);
-
+  console.log('styles before return: ', styles);
+  console.log('rating before return: ', rating);
   if (styles && rating) { // whether the data exists.
     return (
       <li className="cards" onClick={switchProduct}>
@@ -49,7 +52,7 @@ const Cards = (props) => {
         <div className="cardPrice">${props.product.default_price}</div>
         <div className="stars">
           {/* Waiting for further avg rating, if necessary */}
-          <Ratings rating={rating.results.length === 0 ? 0 : rating.results[0].rating} widgetRatedColors="blue" widgetDimensions="15px" widgetRatedColors="rgb(87, 87, 87)" widgetSpacings="0px">
+          <Ratings rating={rating.length === 0 ? 0 : rating[0].rating} widgetRatedColors="blue" widgetDimensions="15px" widgetRatedColors="rgb(87, 87, 87)" widgetSpacings="0px">
             <Ratings.Widget />
             <Ratings.Widget />
             <Ratings.Widget />

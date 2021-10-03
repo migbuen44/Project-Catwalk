@@ -9,7 +9,7 @@ let Search = ({questions, setQuestions, searchQuestions}) => {
     if (currentValue.length >= 3) {
       let matchedQuestions = [];
       searchQuestions.forEach(question => {
-        if (question.question_body.includes(currentValue)) {
+        if (question.body.includes(currentValue)) {
           matchedQuestions.push(question);
         }
       });
