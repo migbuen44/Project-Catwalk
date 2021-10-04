@@ -27,6 +27,7 @@ const Cards = ({ product, styles, rating}) => {
   const switchProduct = () => {
     // console.log('DOne here ', props.product.name);
     dispatch({ type: 'CHANGE_PRODUCT', product: product});
+    document.documentElement.scrollTop = 0;
   };
 
   useEffect(()=> {
@@ -37,7 +38,7 @@ const Cards = ({ product, styles, rating}) => {
   console.log('styles before return: _____________', styles);
   console.log('rating before return: ', rating);
 
-  if (styles && rating) { // whether the data exists.
+  if (product) { // whether the data exists.
     console.log('styles in return: ', styles);
     console.log('product in return: ', product);
     return (
@@ -45,8 +46,8 @@ const Cards = ({ product, styles, rating}) => {
         {/* <span>{styles}</span> */}
         <div className="divcardimg">
           {/* {console.log('styles inside return: $$$$$: ', styles)} */}
-          {styles.results[0].photos.length === 0 ? <div>No Image</div> :
-            <img className="cardImg" src={styles.results[0].photos[0].thumbnail_url} alt="Image is not available" />}
+          {!product.thumbnail_url ? <div>No Image</div> :
+            <img className="cardImg" src={product.thumbnail_url} alt="Image is not available" />}
           {/* {console.log('styles: ', styles, '\n', 'cardImg: ', styles.results[0].photos[0].thumbnail_url)} */}
           {console.log('product: ', product)}
           <button onClick={switchShow} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
@@ -61,7 +62,7 @@ const Cards = ({ product, styles, rating}) => {
         <div className="cardPrice">${product.default_price}</div>
         <div className="stars">
           {/* Waiting for further avg rating, if necessary */}
-          <Ratings rating={rating.length === 0 ? 0 : rating[0].rating} widgetRatedColors="blue" widgetDimensions="15px" widgetRatedColors="rgb(87, 87, 87)" widgetSpacings="0px">
+          <Ratings rating={!rating || rating.length === 0 ? 0 : rating[0].rating} widgetRatedColors="blue" widgetDimensions="15px" widgetRatedColors="rgb(87, 87, 87)" widgetSpacings="0px">
             <Ratings.Widget />
             <Ratings.Widget />
             <Ratings.Widget />

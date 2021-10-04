@@ -135,17 +135,26 @@ const Products = (props) => {
       //   const result = await axios.get(`${url}/products/${id}`, options);
       //   productsArr.push(result.data);
       // });
+      setRelatedProducts([]);
       for (let id of props.testdata) {
-        const result = await axios.get(`${url}/products/${id}`, options);
-        productArr.push(result.data);
-        const result2 = await axios.get(`${url}/products/${id}/styles`, options);
-        stylesArr.push(result2.data);
-        const result3 = await axios.get(`${url}/reviews/${id}`, options);
-        reviewArr.push(result3.data);
+        // const resultTest = await axios.get(`${url}/products/${id}`, options);
+        // console.log('result test in loop: ', resultTest.data);
+        // productArr.push(result.data);
+        // const result2 = await axios.get(`${url}/products/${id}/styles`, options);
+        // stylesArr.push(result2.data);
+        // const result3 = await axios.get(`${url}/reviews/${id}`, options);
+        // reviewArr.push(result3.data);
+        const result = await axios.get(`${url}/products/${id}`);
+        console.log('result in loop: ', result.data);
+        setRelatedProducts(prev => {
+          // return prev.push(result.data[0]);
+          return [...prev, result.data];
+        });
+        // console.log('related products in loop: ', relatedProducts);
       }
-      setRelatedProducts(productArr);
-      setProductStyles(stylesArr);
-      setReview(reviewArr);
+      // setRelatedProducts(productArr);
+      // setProductStyles(stylesArr);
+      // setReview(reviewArr);
     };
 
     const fetchStyles = async () => {
