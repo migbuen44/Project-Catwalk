@@ -77,12 +77,10 @@ const ImageGallery = (props) => {
   // let natWidth, natHeight;
 
   // const getImgSize = (url) => {
-  //   console.log('imgsize', url)
   //   let imgSrc = document.createElement('img');
   //   imgSrc.src = url;
   //   natWidth = imgSrc.naturalWidth;
   //   natHeight = imgSrc.naturalHeight;
-  //   console.log(natWidth, natHeight);
   // }
 
 

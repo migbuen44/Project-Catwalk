@@ -35,12 +35,7 @@ const Cards = ({ product, styles, rating}) => {
     // setRating(reviewInfo);
   }, [product]);
 
-  console.log('styles before return: _____________', styles);
-  console.log('rating before return: ', rating);
-
   if (product) { // whether the data exists.
-    console.log('styles in return: ', styles);
-    console.log('product in return: ', product);
     return (
       <li className="cards" onClick={switchProduct}>
         {/* <span>{styles}</span> */}
@@ -49,7 +44,6 @@ const Cards = ({ product, styles, rating}) => {
           {!product.thumbnail_url ? <div>No Image</div> :
             <img className="cardImg" src={product.thumbnail_url} alt="Image is not available" />}
           {/* {console.log('styles: ', styles, '\n', 'cardImg: ', styles.results[0].photos[0].thumbnail_url)} */}
-          {console.log('product: ', product)}
           <button onClick={switchShow} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
         </div>
         <div className="cardCategory" ><span>{product.category}</span></div>

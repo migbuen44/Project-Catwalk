@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 const Ratingss = () => {
   // const review = useSelector((state) => state.ratingsReducer.ratings)
   const reviews = useSelector((state) => state.reviewsReducer.reviews)
-  // console.log('REVIEWS FROM RATINGS', reviews)
   let rating = 0;
   let totalPercentage = 0;
 
@@ -31,7 +30,7 @@ const Ratingss = () => {
     <div>
       <div className="ratingsAndReviewsTitle">RATINGS & REVIEWS</div>
       <div className="starAndAveRating">
-        <span className="ratingAve">{rating}</span>
+        <span className="ratingAve">{rating.toString().slice(0, 3)}</span>
         <div className="starAve" >
           <Ratings
             rating={Math.round(rating * 10) / 10}

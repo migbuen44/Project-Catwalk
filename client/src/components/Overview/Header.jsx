@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import axios from 'axios';
 import TOKEN from '../../../../config.js';
-const url = 'http://18.216.123.108/api';
+const url = 'https://cdn.projectcatwalk.us/api';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 

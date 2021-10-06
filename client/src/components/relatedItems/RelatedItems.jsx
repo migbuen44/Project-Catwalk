@@ -4,7 +4,7 @@ import axios from 'axios';
 import Products from './Products.jsx';
 import { useSelector } from 'react-redux';
 
-const url = 'http://18.216.123.108/api';
+const url = 'https://cdn.projectcatwalk.us/api';
 const options = {
   headers: {
     Authorization: Token.TOKEN
@@ -20,7 +20,6 @@ const RelatedItems = (props) => {
   const getRelatedProductsId = (incomingProductId) => {
     axios.get(`${url}/products/${incomingProductId}/related`, options)
       .then(res => {
-        console.log('res herer is ', res.data);
         setRelatedProductsId(res.data);
       })
       .catch(err => console.log(err));

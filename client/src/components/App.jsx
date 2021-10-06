@@ -11,7 +11,7 @@ import RelatedItems from './relatedItems/RelatedItems.jsx';
 
 // api option data //
 import TOKEN from '../../../config.js';
-const url = 'http://18.216.123.108/api';
+const url = 'https://cdn.projectcatwalk.us/api';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 
@@ -73,15 +73,14 @@ const App = () => {
 
 
   const getAllreviews = () => {
-    axios.get(`${url}/reviews/?page=1&count=100&product_id=${product.id}`, auth)
+    axios.get(`${url}/reviews/${product.id}`, auth)
       .then(({ data }) => {
-        // console.log('DATA', data);
         setReviews({
-          results: data.results.slice(0, 2),
-          moreReviews: data.results.slice(2),
-          allReviews: data.results
+          results: data.slice(0, 2),
+          moreReviews: data.slice(2),
+          allReviews: data
         });
-        dispatch({ type: 'reviews', reviews: data.results });
+        dispatch({ type: 'reviews', reviews: data });
       })
       .catch(err => console.error(err));
 
@@ -90,7 +89,6 @@ const App = () => {
   const getMetaReviews = () => {
     axios.get(`${url}/reviews/meta?product_id=16060`, auth)
       .then(({ data }) => {
-        console.log('metadata', data);
         setMetaReview(data);
       })
       .catch(err => console.error(err));
@@ -126,10 +124,9 @@ const App = () => {
       },
       headers: auth.headers
     });
-    console.log('handleSortReviews called');
     setReviews({
-      results: reviewsList.data.results.slice(0, 2),
-      moreReviews: reviewsList.data.results.slice(2),
+      results: reviewsList.data.slice(0, 2),
+      moreReviews: reviewsList.data.slice(2),
       sort: e
     });
     // })();

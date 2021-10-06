@@ -17,12 +17,10 @@ let Question = ({question, PRODUCT_ID}) => {
   const auth = info.auth;
   let testUrl = `${url}/qa/questions/${question.id}/answers?page=1&count=4`;
 
-  // console.log('testUrl: ', testUrl);
 
   let retrieveAnswers = (page, count) => {
     axios.get(`${url}/qa/questions/${question.id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        console.log('answer data: ', data);
         let sortedAnswers = _.sortBy(data, (answer) => {
           return answer.helpfulness;
         });
