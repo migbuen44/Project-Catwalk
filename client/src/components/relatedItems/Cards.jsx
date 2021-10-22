@@ -35,14 +35,15 @@ const Cards = ({ product, styles, rating}) => {
     // setRating(reviewInfo);
   }, [product]);
 
+  const altUrl = `https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg`;
+
   if (product) { // whether the data exists.
     return (
       <li className="cards" onClick={switchProduct}>
         {/* <span>{styles}</span> */}
         <div className="divcardimg">
           {/* {console.log('styles inside return: $$$$$: ', styles)} */}
-          {!product.thumbnail_url ? <div>No Image</div> :
-            <img className="cardImg" src={product.thumbnail_url} alt="Image is not available" />}
+          <img className="cardImg" src={product.thumbnail_url ? product.thumbnail_url : altUrl} alt="Image is not available" />
           {/* {console.log('styles: ', styles, '\n', 'cardImg: ', styles.results[0].photos[0].thumbnail_url)} */}
           <button onClick={switchShow} style={{border: 'transparent', background: 'transparent', float: 'right'}}>&#9734;</button>
         </div>

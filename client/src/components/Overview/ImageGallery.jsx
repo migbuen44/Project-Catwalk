@@ -102,7 +102,7 @@ const ImageGallery = (props) => {
     return (avgHeight * (photoIndex - 1));
   };
 
-
+  const altUrl = `https://st3.depositphotos.com/23594922/31822/v/600/depositphotos_318221368-stock-illustration-missing-picture-page-for-website.jpg`;
 
   if (selectedStyle) {
     return (
@@ -123,10 +123,11 @@ const ImageGallery = (props) => {
               <div id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
                   <div id='thumbnail' key={id} className="mb-4" >
+                    {console.log('photo: ', photo)}
                     {photoIndex === id ?
-                      <Image id={`pIndex${id}`} src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
+                      <Image id={`pIndex${id}`} src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                       :
-                      <Image id={`pIndex${id}`} src={photo.thumbnail_url} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
+                      <Image id={`pIndex${id}`} src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                     }
                   </div>
                 ))}
@@ -164,10 +165,11 @@ const ImageGallery = (props) => {
             <Row id="thumbnailGallery" style={{height: '100%', overflowX: 'scroll', width: '60vw', display: 'flex', justifyContent: 'space-between'}}>
               {selectedStyle && selectedStyle.photos.map((photo, id) => (
                 <Col id='modal-thumbnail' key={id} className="mb-4">
+                  {console.log('photo: ', photo)}
                   {photoIndex === id ?
-                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
+                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                     :
-                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
+                    <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} key={id} value={photo} onClick={() => selectPhoto(photo, id)} />
                   }
                 </Col>
               ))}
