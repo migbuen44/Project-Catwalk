@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import axios from 'axios';
 import TOKEN from '../../../../config.js';
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'https://cdn.projectcatwalk.us/api';
 const auth = { headers: { Authorization: TOKEN.TOKEN } };
 
 

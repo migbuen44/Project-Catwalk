@@ -13,7 +13,7 @@ import 'swiper/components/navigation/navigation.min.css';
 
 SwiperCore.use([Pagination, Navigation]);
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'https://cdn.projectcatwalk.us/api';
 const options = {
   headers: {
     Authorization: Token.TOKEN
@@ -71,7 +71,7 @@ const Products = (props) => {
   const getReview = () => {
     let reviewArr = [];
     props.testdata.map((id, index) => {
-      return axios.get(`${url}/reviews?product_id=${id}`, options)
+      return axios.get(`${url}/reviews/${id}`, options)
         .then(res => {
           // setReview([review, res.data]);
           // console.log('data in review', res.data);
@@ -107,9 +107,12 @@ const Products = (props) => {
     //   )
     // } else {
     // }
+    // console.log('create card related products: ', relatedProducts);
+    // console.log('create card styles: ', productStyles);
+    // console.log('create card reviews: ', review);
     return relatedProducts.map((product, index) => (
       <SwiperSlide key={index}>
-        <Cards product={product} key={index} stylesInfo={productStyles[index]} reviewInfo={review[index]} position={isMoved}/>
+        <Cards product={product} key={index} styles={productStyles[index]} rating={review[index]} position={isMoved}/>
       </SwiperSlide>
     ));
   };
@@ -123,11 +126,28 @@ const Products = (props) => {
       //   const result = await axios.get(`${url}/products/${id}`, options);
       //   productsArr.push(result.data);
       // });
+      setRelatedProducts([]);
       for (let id of props.testdata) {
-        const result = await axios.get(`${url}/products/${id}`, options);
-        productArr.push(result.data);
+        // const resultTest = await axios.get(`${url}/products/${id}`, options);
+        // console.log('result test in loop: ', resultTest.data);
+        // productArr.push(result.data);
+        // const result2 = await axios.get(`${url}/products/${id}/styles`, options);
+        // stylesArr.push(result2.data);
+        // const result3 = await axios.get(`${url}/reviews/${id}`, options);
+        // reviewArr.push(result3.data);
+        const result = await axios.get(`${url}/products/${id}`);
+        if (!result.data.thumbnail_url) {
+          continue;
+        }
+        setRelatedProducts(prev => {
+          // return prev.push(result.data[0]);
+          return [...prev, result.data];
+        });
+        // console.log('related products in loop: ', relatedProducts);
       }
-      setRelatedProducts(productArr);
+      // setRelatedProducts(productArr);
+      // setProductStyles(stylesArr);
+      // setReview(reviewArr);
     };
 
     const fetchStyles = async () => {
@@ -138,15 +158,14 @@ const Products = (props) => {
       setProductStyles(stylesArr);
     };
 
+    // fetchStyles();
     fetchProduct();
     // fetchStyles();
-
-    getStyles();
-    getReview();
+    // getStyles();
+    // getReview();
 
     // console.log('props here is ', props.testdata);
   }, [props.testdata]);
-
 
   if (relatedProducts && productStyles && review) {
     return (

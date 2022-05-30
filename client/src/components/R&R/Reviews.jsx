@@ -16,7 +16,6 @@ const Reviews = ({ review, handleHelpfulness }) => {
   // for (var i =0; i < review.photos.length; i++) {
   //   photos += review.photos[i].url;
   // }
-  // console.log("PHOTOS", photos)
 
   return (
     < div >

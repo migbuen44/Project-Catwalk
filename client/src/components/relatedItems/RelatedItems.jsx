@@ -4,7 +4,7 @@ import axios from 'axios';
 import Products from './Products.jsx';
 import { useSelector } from 'react-redux';
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'https://cdn.projectcatwalk.us/api';
 const options = {
   headers: {
     Authorization: Token.TOKEN
@@ -20,7 +20,6 @@ const RelatedItems = (props) => {
   const getRelatedProductsId = (incomingProductId) => {
     axios.get(`${url}/products/${incomingProductId}/related`, options)
       .then(res => {
-        // console.log('res herer is ', res.data);
         setRelatedProductsId(res.data);
       })
       .catch(err => console.log(err));

@@ -19,7 +19,6 @@ const atelierHelper = {
         res.status(200).send(response.data);
       })
       .catch(err => {
-        console.log('err here is', err);
         res.status(400).send(err);
       });
   }

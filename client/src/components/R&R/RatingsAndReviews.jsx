@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import ReviewModal from './ReviewModal.jsx'
 
-const url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-lax';
+const url = 'https://cdn.projectcatwalk.us/api';
 const auth = {
   headers: {
     Authorization: TOKEN.TOKEN

@@ -22,8 +22,8 @@ let QandA = ({productId}) => {
   let retrieveQuestions = (page, count) => {
     axios.get(`${url}/qa/questions?product_id=${PRODUCT_ID}&page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        let sortedQuestions = _.sortBy(data.results, (question) => {
-          return question.question_helpfulness;
+        let sortedQuestions = _.sortBy(data, (question) => {
+          return question.helpfulness;
         });
         sortedQuestions = sortedQuestions.reverse();
         setQuestions(sortedQuestions);

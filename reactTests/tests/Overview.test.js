@@ -66,7 +66,7 @@ describe('Overview renders Product Information', () => {
   // #2. Checks that review component does not render if there are no reviews
   it('does not render review component if there are no reviews', async () => {
     const testReviews = {
-      "product": "16056",
+      "product": "1",
       "page": 0,
       "count": 0,
       "results": []
@@ -87,7 +87,7 @@ describe('Overview renders Product Information', () => {
   // #3. Renders star rating if there are reviews
   it('should render star ratings if there are reviews', async () => {
     const testReviews = {
-      "product": "16056",
+      "product": "1",
       "page": 0,
       "count": 0,
       "results": [

@@ -15,11 +15,13 @@ let Question = ({question, PRODUCT_ID}) => {
 
   const url = info.url;
   const auth = info.auth;
+  let testUrl = `${url}/qa/questions/${question.id}/answers?page=1&count=4`;
+
 
   let retrieveAnswers = (page, count) => {
-    axios.get(`${url}/qa/questions/${question.question_id}/answers?page=${page}&count=${count}`, auth)
+    axios.get(`${url}/qa/questions/${question.id}/answers?page=${page}&count=${count}`, auth)
       .then(({data}) => {
-        let sortedAnswers = _.sortBy(data.results, (answer) => {
+        let sortedAnswers = _.sortBy(data, (answer) => {
           return answer.helpfulness;
         });
         sortedAnswers = sortedAnswers.reverse();
@@ -33,7 +35,7 @@ let Question = ({question, PRODUCT_ID}) => {
   useEffect(() => {
     setAnswerCount(2);
     retrieveAnswers(1, answerCount);
-    setQuestionHelpfulness(question.question_helpfulness);
+    setQuestionHelpfulness(question.helpfulness);
     setHelpfulClicked(false);
     setReportClicked(false);
     setAddAnswerIsOpen(false);
@@ -77,7 +79,7 @@ let Question = ({question, PRODUCT_ID}) => {
   return (
     <div>
       <span className='letter'>Q:</span>
-      <span className='questionBody'> {question.question_body}</span>
+      <span className='questionBody'> {question.body}</span>
       <span className='helpfulInfo question'>  Helpful?
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
         <span className='helpfulness'> ({questionHelpfulness}) |</span>
@@ -92,7 +94,7 @@ let Question = ({question, PRODUCT_ID}) => {
       <div className='moreAnswers' onClick={moreAnswersHandler}>
         Load More Answers
       </div>
-      <AddAnswer question_id={question.question_id} question_body={question.question_body}
+      <AddAnswer question_id={question.id} question_body={question.body}
         open={addAnswerIsOpen} onClose={() => setAddAnswerIsOpen(false)}/>
     </div>
   );

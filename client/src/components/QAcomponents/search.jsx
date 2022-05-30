@@ -9,7 +9,7 @@ let Search = ({questions, setQuestions, searchQuestions}) => {
     if (currentValue.length >= 3) {
       let matchedQuestions = [];
       searchQuestions.forEach(question => {
-        if (question.question_body.includes(currentValue)) {
+        if (question.body.includes(currentValue)) {
           matchedQuestions.push(question);
         }
       });
@@ -24,7 +24,7 @@ let Search = ({questions, setQuestions, searchQuestions}) => {
 
   return (
     <form>
-      <input className='search' type='text' placeholder="Have A Question Search For Answers..."
+      <input className='search' type='text' placeholder="Enter question..."
         value={value} onChange={handleSearchChange}/>
     </form>
   );

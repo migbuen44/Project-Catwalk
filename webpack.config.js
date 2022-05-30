@@ -5,6 +5,7 @@ const DIST_DIR = path.join(__dirname, 'client/dist');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
+  // debug: true,
   entry: `${SRC_DIR}/index.jsx`,
   output: {
     filename: 'bundle.js',
@@ -15,10 +16,10 @@ module.exports = {
   // resolve: {
   //   extensions: ['.js', '.jsx']
   // },
-  optimization: {
-    minimize: true,
-    minimizer: [new TerserPlugin()]
-  },
+  // optimization: {
+  //   minimize: true,
+  //   minimizer: [new TerserPlugin()]
+  // },
 
   module: {
     rules: [
