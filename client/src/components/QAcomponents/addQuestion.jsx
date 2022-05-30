@@ -89,15 +89,15 @@ let AddQuestion = ({open, onClose, PRODUCT_ID}) => {
         <div className='addQuestionTitle'>Ask A Question About This Product</div>
         <div className='questionForm'>
           <div>Your Question *</div>
-          <textarea className='yourQuestion questionInput' placeholder='Example: Is it true to size?'
+          <textarea className='yourQuestion questionInput' placeholder='Is it true to size?'
             type='text' onChange={handleQuestion}/>
           <div>Your Nickname *</div>
-          <input type='text' className='yourNickname questionInput' placeholder='Example: jack11'
+          <input type='text' className='yourNickname questionInput' placeholder='jack11'
             onChange={handleNickname} />
           <div className='addQuestionInfo'>For privacy reasons, do not use your full name or
           email address</div>
           <div>Your Email *</div>
-          <input type='email' className='yourEmail questionInput' placeholder='Example: jack@gmail.com'
+          <input type='email' className='yourEmail questionInput' placeholder='jack@gmail.com'
             onChange={handleEmail}/>
           <div className='addQuestionInfo'>For authentication reasons, you will
           not be emailed</div>

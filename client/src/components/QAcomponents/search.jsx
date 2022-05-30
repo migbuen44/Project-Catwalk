@@ -24,7 +24,7 @@ let Search = ({questions, setQuestions, searchQuestions}) => {
 
   return (
     <form>
-      <input className='search' type='text' placeholder="Have A Question Search For Answers..."
+      <input className='search' type='text' placeholder="Enter question..."
         value={value} onChange={handleSearchChange}/>
     </form>
   );

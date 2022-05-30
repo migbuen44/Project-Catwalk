@@ -104,10 +104,10 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
       <div style={MODAL_STYLES}>
         <button className='x' onClick={onClose}>X</button>
         <div className='addAnswerTitle'>Submit Your Answer</div>
-        <div className='addAnswerSubtitle'>Product Name: {question_body}</div>
+        <div className='addAnswerSubtitle'>Question: {question_body}</div>
         <div className='answerForm'>
           <div>Your Answer *</div>
-          <textarea className='yourAnswer answerInput' type='text' placeholder='Example: It is true to size.'
+          <textarea className='yourAnswer answerInput' type='text' placeholder='I think the product is...'
             onChange={handleAnswer}/>
           <div>Your Photos</div>
           <input type='text' className='yourPhoto answerInput' placeholder='Place photo URL here...' onChange={handleYourPhoto}/>
@@ -119,12 +119,12 @@ let AddAnswer = ({open, onClose, question_id, question_body}) => {
             })}
           </div>
           <div>Your Nickname *</div>
-          <input type='text' className='yourNickname answerInput' placeholder='Example: jack11'
+          <input type='text' className='yourNickname answerInput' placeholder='jack11'
             onChange={handleNickname} />
           <div className='addAnswerInfo'>For privacy reasons, do not use your full name or
           email address</div>
           <div>Your Email *</div>
-          <input type='email' className='yourEmail answerInput' placeholder='Example: jack@gmail.com'
+          <input type='email' className='yourEmail answerInput' placeholder='jack@gmail.com'
             onChange={handleEmail}/>
           <div className='addAnswerInfo'>For authentication reasons, you will
           not be emailed</div>

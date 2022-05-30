@@ -61,7 +61,7 @@ let Answer = ({answer}) => {
       </div>
       <div className='answerInfo'>  By
         <span className='userName'> {answer.name}</span>
-        <span className='date'>&nbsp;{new Date(answer.date).toString().slice(4, 16)}</span>
+        {/* <span className='date'>&nbsp;{new Date(answer.date_written).toString().slice(4, 16)}</span> */}
         <span className='helpful'> | Helpful? </span>
         <span className='yes' onClick={helpfulClickHandler}> Yes</span>
         <span className='helpfulness'> ({answerHelpfulness}) |</span>

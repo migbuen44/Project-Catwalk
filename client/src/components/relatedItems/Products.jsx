@@ -136,7 +136,6 @@ const Products = (props) => {
         // const result3 = await axios.get(`${url}/reviews/${id}`, options);
         // reviewArr.push(result3.data);
         const result = await axios.get(`${url}/products/${id}`);
-        console.log('result: ', result);
         if (!result.data.thumbnail_url) {
           continue;
         }

@@ -123,7 +123,7 @@ const ImageGallery = (props) => {
               <div id="thumbnailGallery" style={{height: '75vh', overflowY: 'scroll'}}>
                 {selectedStyle && selectedStyle.photos.map((photo, id) => (
                   <div id='thumbnail' key={id} className="mb-4" >
-                    {console.log('photo: ', photo)}
+                    {/* {console.log('photo: ', photo)} */}
                     {photoIndex === id ?
                       <Image id={`pIndex${id}`} src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} thumbnail key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                       :
@@ -165,7 +165,7 @@ const ImageGallery = (props) => {
             <Row id="thumbnailGallery" style={{height: '100%', overflowX: 'scroll', width: '60vw', display: 'flex', justifyContent: 'space-between'}}>
               {selectedStyle && selectedStyle.photos.map((photo, id) => (
                 <Col id='modal-thumbnail' key={id} className="mb-4">
-                  {console.log('photo: ', photo)}
+                  {/* {console.log('photo: ', photo)} */}
                   {photoIndex === id ?
                     <Image id={`pIndex${id}`} className="modal-gallery" src={photo.thumbnail_url ? photo.thumbnail_url : altUrl} key={id} value={photo} onClick={() => selectPhoto(photo, id)} style={{opacity: '60%'}}/>
                     :
