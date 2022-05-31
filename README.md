@@ -17,6 +17,8 @@ npm run build
 npm start
 ```
 
+> **_NOTE:_**  Project uses a custom API to fetch data that may not be currently deployed
+
 ## Features
 1. Product Overview
   - Displays currently selected product with images
